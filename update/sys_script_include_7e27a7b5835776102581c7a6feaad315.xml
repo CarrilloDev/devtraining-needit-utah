@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_58872_needit.GetPhoneNumber</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description>ScriptInclude for give to the Client-side an email. The client-side send to the server, the value of Requested-for field (sys_id). </description>
+        <mobile_callable>false</mobile_callable>
+        <name>GetPhoneNumber</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var GetPhoneNumber = Class.create();
+GetPhoneNumber.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+
+	getPhone: function() {
+		var userBox = new GlideRecord("sys_user"); //En esta caja vamos a meter cosas de la tabla sys_user
+		userBox.get(this.getParameter('sysparm_UserId')); //Llenamos la caja, con el registro que el usuario manda desde el Client Script.
+		return userBox.mobile_phone + ''; //De ese registro, queremos retornar el teléfono móvil
+
+	},
+
+	getCurrentPhone: function(){
+		var userBox = new GlideRecord("sys_user");
+		if(userBox.get(gs.getUserID())){
+			return userBox.mobile_phone + '';
+		}
+
+	},
+
+    type: 'GetPhoneNumber'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-02-27 10:00:31</sys_created_on>
+        <sys_id>7e27a7b5835776102581c7a6feaad315</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>GetPhoneNumber</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_script_include_7e27a7b5835776102581c7a6feaad315</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-02-27 10:33:25</sys_updated_on>
+    </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>7e27a7b5835776102581c7a6feaad315</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-02-27 10:00:31</sys_created_on>
+        <sys_id>60da6f7d835776102581c7a6feaad396</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-02-27 10:00:31</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>
